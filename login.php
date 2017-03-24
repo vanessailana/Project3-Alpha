@@ -30,7 +30,7 @@ if (mysqli_connect_errno())
 
        $user_id = mysqli_real_escape_string($con,$_POST['user_id']);
 
-      $stmnt= "select * from people where username='${username}' AND '${password}' ";
+      $stmnt= "select * from people where username='${username}' AND  password='${password}' ";
 
 
       $query=mysqli_query($con, $stmnt);
@@ -53,8 +53,12 @@ if (mysqli_connect_errno())
       }
 
       else {
+    $message = "wrong password, username, or you didnt enter anything idiot";
+      echo "<script type='text/javascript'>alert('$message');</script>";  
+      echo "<div class=jumbotron> <h1> Wrong Input!</h1>      
+  <p><img src='https://i.ytimg.com/vi/Y4l5wM5o2Lg/hqdefault.jpg'></p>
+</div>";
 
-        echo "WRONG INPUT IDIOT";
       }
 
 
@@ -99,8 +103,10 @@ if (mysqli_connect_errno())
 	<input type="password" name="password" placeholder="*******">
 
 <div class="container">
-
+  <p>
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login Idiot</button>
+
+  </p>
 
   <p></p>
 
@@ -130,7 +136,7 @@ if (mysqli_connect_errno())
         <div class="modal-footer">
 
   
-
+            
             <input type="submit" class="btn btn-outline-primary" name="login" value="login">
 
        
