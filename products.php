@@ -1,50 +1,56 @@
-<?php
- session_start();  
-$connect = mysqli_connect("localhost", "root", "root", "Comp484DB");  
- if(isset($_POST["add"]))  
+ <?session_start();  
+ include("config.php");
+ if(isset($_POST["add_to_cart"]))  
  {  
-      if(isset($_SESSION["shopping_cart"]))  
+      if(isset($_SESSION["cart"]))  
       {  
-           $arrayid = array_column($_SESSION["shopping_cart"], "product_id");  
-           if(!in_array($_GET["id"], arrayid))  
+           $item = array_column($_SESSION["cart"], "item_id");  
+           if(!in_array($_GET["id"], $item))  
            {  
-                $count = count($_SESSION["shopping_cart"]);  
-                $item = array(  
-                     'product_id'               =>     $_GET["id"],  
-                     'product_name'               =>     $_POST["hidden_name"],  
-                     'product_price'          =>     $_POST["hidden_price"]  
+                $count = count($_SESSION["cart"]);  
+                $arrayshit = array(  
+                     'item_id'               =>     $_GET["id"],  
+                     'item_name'               =>     $_POST["hidden_name"],  
+                     'item_price'          =>     $_POST["hidden_price"]  
                      
                 );  
-                $_SESSION["shopping_cart"][$count] = $item;  
-           }   
+                $_SESSION["cart"][$count] = $arrayshit;  
+           }  
+           else  
+           {  
+                echo '<script>alert("You cant add it again loser")</script>';  
+                echo '<script>window.location="index.php"</script>';  
+           }  
       }  
       else  
       {  
-           $item = array(  
-                'product_id'               =>     $_GET["id"],  
-                'product_name'               =>     $_POST["hidden_name"],  
-                'product_price'          =>     $_POST["hidden_price"]  
+           $arrayshit = array(  
+                'item_id'               =>     $_GET["id"],  
+                'item_name'               =>     $_POST["hidden_name"],  
+                'item_price'          =>     $_POST["hidden_price"]  
                 
            );  
-           $_SESSION["shopping_cart"][0] = $item;  
+           $_SESSION["cart"][0] = $arrayshit;  
       }  
  }  
  if(isset($_GET["action"]))  
  {  
       if($_GET["action"] == "delete")  
       {  
-           foreach($_SESSION["shopping_cart"] as $keys => $val)  
+           foreach($_SESSION["cart"] as $keys => $values)  
            {  
-                if($val["product_id"] == $_GET["id"])  
+                if($values["item_id"] == $_GET["id"])  
                 {  
-                     unset($_SESSION["shopping_cart"][$keys]);  
+                     unset($_SESSION["cart"][$keys]);  
                      echo '<script>alert("Item Removed")</script>';  
-                      
+                     echo '<script>window.location="index.php"</script>';  
                 }  
            }  
       }  
  }  
  ?>  
+
+
  <!DOCTYPE html>  
  <html>  
       <head>  
@@ -82,7 +88,7 @@ $connect = mysqli_connect("localhost", "root", "root", "Comp484DB");
                                <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />  
                                <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />  
 
-                               <input type="submit" name="add" style="margin-top:20px;" class="btn btn-info" value="Add to Cart" />  
+                               <input type="submit" name="add_to_cart" style="margin-top:20px;" class="btn btn-info" value="Add to Cart" />  
                           <p></p>
                      </form>  
                 </div>  
@@ -115,21 +121,21 @@ $connect = mysqli_connect("localhost", "root", "root", "Comp484DB");
                               
                           </tr>  
                           <?php   
-                          if(!empty($_SESSION["shopping_cart"]))  
+                          if(!empty($_SESSION["cart"]))  
                           {  
                                $total = 0;  
-                               foreach($_SESSION["shopping_cart"] as $keys => $val)  
+                               foreach($_SESSION["cart"] as $keys => $values)  
                                {  
                           ?>  
                           <tr>  
-                               <td><?php echo $val["product_name"]; ?></td>  
+                               <td><?php echo $values["item_name"]; ?></td>  
                              
-                               <td>$ <?php echo $val["product_price"]; ?></td>  
+                               <td>$ <?php echo $values["item_price"]; ?></td>  
                                 
-                               <td><a class="btn btn-success"  href="index.php?action=delete&id=<?php echo $val["product_id"]; ?>">Remove</td>  </a>
+                               <td><a class="btn btn-success"  href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>">Remove</td>  </a>
                           </tr>  
                           <?php  
-                                    $total = $total +  $val["product_price"];  
+                                    $total = $total +  $values["item_price"];  
                                }  
                           ?>  
                         
@@ -142,8 +148,7 @@ $connect = mysqli_connect("localhost", "root", "root", "Comp484DB");
 
                       
                                <h1> Total COST OF DAMAGE </h1>
-                               <h1>$ <?php echo number_format($total, 2); ?></h1>  
-                               <td></td>  
+                              
 
            
 
