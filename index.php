@@ -36,7 +36,8 @@ include("header.php");
 <center>
 <h1> OUR MENU </h1>
 <h2> So you know all drinks come in a 1 ounce cup </h2>
-<h3> We are cheap and you can order the most one thing from a menu </h3>
+<h3> We are cheap and only have one thing of each on the menu. We only make each beverage <kbd> ONCE </kbd> a day</h3>
+<h3><kbd> Budget Lyfe </kbd></h3>
 </center>
 <p></p>
  &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;

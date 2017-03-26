@@ -1,3 +1,7 @@
+<?php 
+include("config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +28,8 @@
 <h1> And type in the following items, you purchased </h1>
 
 
-<h1> Also order id number is <?php $n1 = rand (1, 99); echo  "<mark>". $n1 ."</mark>"; ?> <p></p> So Please type it in the provided box to make our life way easier</h1>
+
+<h1> Also type the order id number, it  is <?php $n1 = rand (1, 99); echo  "<mark>". $n1 ."</mark>"; ?> <p></p> So Please type it in the provided boxes to make our life way easier CAUSE WE ARE LAZYYYYY</h1>
 
 <div class="form-group">
 <form action="submit.php" method="post">
@@ -65,31 +70,19 @@
 </body>
 </html>
 
-
-<?php $n1 = rand (1, 99); echo $n1 ?>
 					
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "Comp484DB";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+//inserting the submit form into the ordertable in the DB. 
 
 $sql = "INSERT INTO ordertable (order_id, productid, price,Items_bought,status,user_id)
 VALUES ('$_POST[userid]','$_POST[productid]','$_POST[cost]','$_POST[text]','Pending','$_POST[userid]')";
 
-if ($conn->query($sql) === TRUE) {
+if ($con->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-$conn->close();
+
 ?>

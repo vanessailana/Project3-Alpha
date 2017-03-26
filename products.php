@@ -10,8 +10,8 @@
                 $count = count($_SESSION["cart"]);  
                 $arrayshit = array(  
                      'product_id'               =>     $_GET["id"],  
-                     'product_name'               =>     $_POST["hidden_name"],  
-                     'product_price'          =>     $_POST["hidden_price"]  
+                     'product_name'               =>     $_POST["title"],  
+                     'product_price'          =>     $_POST["cost"]  
                      
                 );  
                 $_SESSION["cart"][$count] = $arrayshit;  
@@ -26,8 +26,8 @@
       {  
            $arrayshit = array(  
                 'product_id'               =>     $_GET["id"],  
-                'product_name'               =>     $_POST["hidden_name"],  
-                'product_price'          =>     $_POST["hidden_price"]  
+                'product_name'               =>     $_POST["title"],  
+                'product_price'          =>     $_POST["cost"]  
                 
            );  
            $_SESSION["cart"][0] = $arrayshit;  
@@ -42,38 +42,36 @@
                 if($values["product_id"] == $_GET["id"])  
                 {  
                      unset($_SESSION["cart"][$keys]);  
-                     echo '<script>alert("Item Removed")</script>';  
-                     echo '<script>window.location="index.php"</script>';  
+                     echo '<script>alert("YOU REMOVED AN ITEM LOSER")</script>';  
+                    
                 }  
            }  
       }  
  }  
  ?>  
 
-
- <!DOCTYPE html>  
+<!DOCTYPE html>  
  <html>  
       <head>  
-         <?php include("style.php"); ?>
+      <?php include("style.php"); ?>
       </head>  
       <body>  
-
-
-
-
-                
-                <?php  
-                $query = "SELECT * FROM products";  
-                $result = mysqli_query($con, $query);  
+<?php  
+      $query = "SELECT * FROM products";  
+          $result = mysqli_query($con, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  
                      while($row = mysqli_fetch_array($result))  
                      {  
+
+                      
                 ?>  
            <p></p>
 
 
              <div class="container" style="margin-top: 100px" >
+          <!--lol shitty non breaking space-->
+
   &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
                
 
@@ -85,8 +83,8 @@
                                <h1><span><b> Product Identification Num: </br> </span> <?php echo $row["id"]; ?></h1> 
 
                                
-                               <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />  
-                               <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />  
+                               <input type="hidden" name="title" value="<?php echo $row["name"]; ?>" />  
+                               <input type="hidden" name="cost" value="<?php echo $row["price"]; ?>" />  
 
                                <input type="submit" name="add" style="margin-top:20px;" class="btn btn-info" value="Add to Cart" />  
                           <p></p>
@@ -105,7 +103,6 @@
           
 
   
-  </form>
 
               
                 </center>
@@ -132,7 +129,7 @@
                              
                                <td>$ <?php echo $values["product_price"]; ?></td>  
                                 
-                               <td><a class="btn btn-success"  href="index.php?action=delete&id=<?php echo $values["product_id"]; ?>">Remove</td>  </a>
+                               <td><a class="btn btn-danger"  href="index.php?action=delete&id=<?php echo $values["product_id"]; ?>">Remove</td>  </a>
                           </tr>  
                           <?php  
                                     $total = $total +  $values["product_price"];  

@@ -40,7 +40,9 @@ if (mysqli_connect_errno())
       $person=$ppl[0];
       //this is the first row; it should be only one user with that username;   
       //
-    
+      //
+   
+
 
       if($person['role_id']=='1') {
 
@@ -49,7 +51,8 @@ if (mysqli_connect_errno())
       }
 
       elseif($person['role_id']=='2') {
-          echo "ugly";
+         echo "ugly";
+          
 
       }
 
