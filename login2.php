@@ -45,7 +45,6 @@ if (mysqli_connect_errno())
       if($person['role_id']=='1') {
 
         header("Location: index.php");
-        exit();
       }
 
       elseif($person['role_id']=='2') {
@@ -86,13 +85,8 @@ if (mysqli_connect_errno())
   <body>
   <center>
 
-
-
-    <h1>Welcome To Tarbucks </h1>
-    <h2> The best Coffee int town! </h2>
-    <h3> Login type in your credentials and the magic will begin! </h3>
-
-    <title> The best coffee </title>
+    <h1> Bye And Come Back If You want Maybe!  <span class="glyphicon glyphicon-thumbs-down">
+        </a></h1>
     </center>
 
     <center>
@@ -104,19 +98,15 @@ if (mysqli_connect_errno())
 	<input type="password" name="password" placeholder="*******">
 
 <div class="container">
-  <p></p>
-
-  <p>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login Idiot</button>
-
-  </p>
+<p></p>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login AGAIN Idiot</button>
 
   <p></p>
 
   <div class="container">
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FRz3vfRFfs4" frameborder="0" allowfullscreen></iframe>
 
+ <img src="https://cdn.meme.am/instances/45936082.jpg">
 </div>
 
 
@@ -139,7 +129,7 @@ if (mysqli_connect_errno())
         <div class="modal-footer">
 
   
-            
+
             <input type="submit" class="btn btn-outline-primary" name="login" value="login">
 
        

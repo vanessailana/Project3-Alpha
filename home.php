@@ -1,9 +1,13 @@
+
+
+
 <?php
 
 require_once("config.php");
 
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -19,12 +23,21 @@ require_once("style.php");
    
   </head>
   <body>
-  
-<div class="jumbotron">
-  <h1 class="display-3">You are about to add this item into your cart.</h1>
-  <p class="lead">Are you sure? We do not have such a good rating on Yelp lol</p>
-  <hr class="my-4">
-  <p>
+
+  <?php include("header.php") ?>
+
+
+<h1> WELCOME TO THE WORST COFFEE SHOP IN THE WORLD LOL </h1>
+
+
+<h1> THE <kbd> MOST INTERESTING PEOPLE COME HERE. </kbd> WE ARE NOT KIDDING</h1>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="alert alert-info">
+    <h1 class="display-3">ATTENTION</h1>
+    <p class="lead">SOON ENOUGH, WE WILL EVENTUALLY SERVING 10 OUNCE DRINKS INSTEAD OF like a 1 ounce cup!</p>
+  </div>
+</div>
    <div class="container">
   <p></p>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -54,14 +67,7 @@ require_once("style.php");
   </a>
 </div>
 </div>
-</p>
-  <p class="lead">
- </p>
 
-    <a class="btn btn-primary btn-lg" href="#" role="button">Add Item!</a>
-  </p>
-</div>
-  
 
   <?php
 
@@ -69,6 +75,8 @@ require_once("scripts.php");
 
 
 ?>
+
+
 
   </body>
 </html>
