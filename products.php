@@ -1,17 +1,17 @@
  <?session_start();  
  include("config.php");
- if(isset($_POST["add_to_cart"]))  
+ if(isset($_POST["add"]))  
  {  
       if(isset($_SESSION["cart"]))  
       {  
-           $item = array_column($_SESSION["cart"], "item_id");  
+           $item = array_column($_SESSION["cart"], "product_id");  
            if(!in_array($_GET["id"], $item))  
            {  
                 $count = count($_SESSION["cart"]);  
                 $arrayshit = array(  
-                     'item_id'               =>     $_GET["id"],  
-                     'item_name'               =>     $_POST["hidden_name"],  
-                     'item_price'          =>     $_POST["hidden_price"]  
+                     'product_id'               =>     $_GET["id"],  
+                     'product_name'               =>     $_POST["hidden_name"],  
+                     'product_price'          =>     $_POST["hidden_price"]  
                      
                 );  
                 $_SESSION["cart"][$count] = $arrayshit;  
@@ -25,9 +25,9 @@
       else  
       {  
            $arrayshit = array(  
-                'item_id'               =>     $_GET["id"],  
-                'item_name'               =>     $_POST["hidden_name"],  
-                'item_price'          =>     $_POST["hidden_price"]  
+                'product_id'               =>     $_GET["id"],  
+                'product_name'               =>     $_POST["hidden_name"],  
+                'product_price'          =>     $_POST["hidden_price"]  
                 
            );  
            $_SESSION["cart"][0] = $arrayshit;  
@@ -39,7 +39,7 @@
       {  
            foreach($_SESSION["cart"] as $keys => $values)  
            {  
-                if($values["item_id"] == $_GET["id"])  
+                if($values["product_id"] == $_GET["id"])  
                 {  
                      unset($_SESSION["cart"][$keys]);  
                      echo '<script>alert("Item Removed")</script>';  
@@ -88,7 +88,7 @@
                                <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />  
                                <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />  
 
-                               <input type="submit" name="add_to_cart" style="margin-top:20px;" class="btn btn-info" value="Add to Cart" />  
+                               <input type="submit" name="add" style="margin-top:20px;" class="btn btn-info" value="Add to Cart" />  
                           <p></p>
                      </form>  
                 </div>  
@@ -128,14 +128,14 @@
                                {  
                           ?>  
                           <tr>  
-                               <td><?php echo $values["item_name"]; ?></td>  
+                               <td><?php echo $values["product_name"]; ?></td>  
                              
-                               <td>$ <?php echo $values["item_price"]; ?></td>  
+                               <td>$ <?php echo $values["product_price"]; ?></td>  
                                 
-                               <td><a class="btn btn-success"  href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>">Remove</td>  </a>
+                               <td><a class="btn btn-success"  href="index.php?action=delete&id=<?php echo $values["product_id"]; ?>">Remove</td>  </a>
                           </tr>  
                           <?php  
-                                    $total = $total +  $values["item_price"];  
+                                    $total = $total +  $values["product_price"];  
                                }  
                           ?>  
                         
@@ -147,9 +147,10 @@
                      </table>  
 
                       
-                               <h1> Total COST OF DAMAGE </h1>
-                              
-
+                               <h1> Total COST OF DAMAGE: </h1>
+  <center>                            
+<h1>$ <?php echo number_format($total, 0); ?></h1>  
+</center>
            
 
 
