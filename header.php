@@ -56,7 +56,7 @@ require_once("style.php");
   <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAejAAAAJDIxYzdkMTE2LWFlMTMtNDVmYS1hMDc5LTlhZjQ2ZTM4OTEyMA.jpg" width="50px" height="50px" style="margin-left: 1200px; margin-top: -200px">
 <center>
 
- <a class="btn btn-primary" style="margin-right: -999px; margin-top: -250px" href="logout.php"> Logout </a>
+ <a class="btn btn-primary" style="margin-right: -990px; margin-top: -250px" href="logout.php"> Logout </a>
  </center>
   <?php
 

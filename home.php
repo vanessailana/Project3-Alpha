@@ -16,7 +16,7 @@ require_once("config.php");
 
   <?php
 
-require_once("style.php");
+include("style.php");
 
 
 ?>

@@ -32,10 +32,10 @@ require_once("style.php");
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="adminhome.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pending Orders</a>
+        <a class="nav-link" href="pendingorders.php"><b> Pending Orders </br></a>
       </li>
      
       
@@ -43,10 +43,10 @@ require_once("style.php");
 
   </div>
 </nav>
-  <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAejAAAAJDIxYzdkMTE2LWFlMTMtNDVmYS1hMDc5LTlhZjQ2ZTM4OTEyMA.jpg" width="50px" height="50px" style="margin-left: 1050px; margin-top: -110px">
+
 <center>
 
- <a class="btn btn-primary" style="margin-right: -1100px; margin-top: -100px" href="logout.php"> Logout </a>
+ <a class="btn btn-primary" style="margin-right: -1100px; margin-top: -190px" href="logout.php"> Logout </a>
  </center>
   <?php
 

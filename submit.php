@@ -89,7 +89,7 @@ include("config.php");
 //inserting the submit form into the ordertable in the DB. 
 
 $sql = "INSERT INTO ordertable (order_id, productid, price,Items_bought,status,user_id)
-VALUES ('$_POST[userid]','$_POST[productid]','$_POST[cost]','$_POST[text]','Pending','$_POST[userid]')";
+VALUES ('$_POST[userid]','$_POST[productid]','$_POST[cost]','$_POST[text]','Pending','$_POST[orderid]')";
 
 if ($con->query($sql) === TRUE) {
     echo "New record created successfully";

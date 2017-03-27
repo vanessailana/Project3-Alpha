@@ -30,7 +30,7 @@ if (mysqli_connect_errno())
 
        $user_id = mysqli_real_escape_string($con,$_POST['user_id']);
 
-      $stmnt= "select * from people where username='${username}' AND  password='${password}' ";
+      $stmnt= "select * from people where username='${username}' ";
 
 
       $query=mysqli_query($con, $stmnt);
@@ -42,16 +42,19 @@ if (mysqli_connect_errno())
       //
       //
    
-
+   echo $person;
 
       if($person['role_id']=='1') {
 
-        header("Location: index.php");
+        header("Location: adminlogin.php");
         exit();
+        
       }
 
       elseif($person['role_id']=='2') {
-         echo "ugly";
+         header("Location: index.php");
+        exit();
+      
           
 
       }

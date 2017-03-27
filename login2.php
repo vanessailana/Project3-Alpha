@@ -43,13 +43,18 @@ if (mysqli_connect_errno())
     
 
       if($person['role_id']=='1') {
-
-        header("Location: index.php");
+     
+        header("Location: adminlogin.php");
+        exit();
+       
       }
 
       elseif($person['role_id']=='2') {
-          echo "ugly";
 
+      header("Location: index.php");
+        exit();
+            
+       
       }
 
       else {
