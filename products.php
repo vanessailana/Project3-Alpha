@@ -1,3 +1,4 @@
+
  <?session_start();  
  include("config.php");
  if(isset($_POST["add"]))  
@@ -63,7 +64,6 @@
                 {  
                      while($row = mysqli_fetch_array($result))  
                      {  
-
                       
                 ?>  
            <p></p>

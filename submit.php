@@ -32,7 +32,7 @@ include("config.php");
 <h1> <kbd> 5. </kbd> Also type the order id number, it  is <?php $n1 = rand (1, 99); echo  "<mark>". $n1 ."</mark>"; ?> <p></p> So Please type it in the provided boxes to make our life way easier CAUSE WE ARE LAZYYYYY</h1>
 
 <div class="form-group">
-<form action="submit.php" method="post">
+<form action="sucesscustomer.php" method="post">
 
 
 <label> User Id </label>
