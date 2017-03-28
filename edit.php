@@ -24,10 +24,39 @@ session_destroy();
 <?php include("style.php"); ?>
    
   </head>
-  <body>
+
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+
+      var socket = io();
+     
+      $(document).ready(function() {
+
+
+
+
+      $('#form').submit(function(){
+        socket.emit('message', $('#Input').val());
+        //socket.emit('message', "Input");
+        //$('#Input').val('');
+        console.log("guly");
+     
+      });
+
+    });
+    </script>
+    <script>
+    var socket = io.connect('http://localhost:3000');
+    </script>
+    <form id = "form" action = "success.php">
+      Input: <input type="text" id="Input"><br>
+      <input type="submit" value="Submit">
+    </form>
   
  
  <?php include("adminheader.php"); ?>
+ <ul id="messages"></ul>
 
 <form action="success.php" method="post">
 
@@ -46,16 +75,34 @@ session_destroy();
 </div>
 
 <p></p>
-<input type="submit" style="margin-right: 200px" class="btn btn-primary btn-lg" name="name" value="SUBMIT ORDER">  </br>
+      <input id="m" type="submit" autocomplete="off">
 </form>
 
-<form action="pendingorders.php" method="post">
 
+<script>
+  $(function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+  });
+</script>
 
-
-<input type="submit"  class="btn btn-success btn-lg" style="float:right;margin-top: -50px; margin-right: 200px" name="name" value="GO BACK TO PENDING ORDERS PAGE">  </br>
-
-</form>
+<script>
+  $(function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
+  });
+</script>
 
 
 

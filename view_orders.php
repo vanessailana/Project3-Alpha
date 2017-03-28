@@ -10,6 +10,8 @@ require_once("style.php");
 
 
 ?>
+ <script type="text/javascript"></script>
+
    
   </head>
   <body>
